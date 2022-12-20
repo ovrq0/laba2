@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <meta charset="utf-8"/>
+    <title>django789</title>
+</head>
+<body>
+    <h2>Изменение</h2>
+    <form action="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите название фильма</label><br>
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <label>Введите дату выпуска</label><br>
+            <input type="date" name="release_date">
+        </p>
+        <p>
+            <label>Введите имена актёров</label><br>
+            <input type="text" name="actors">
+        </p>
+        <p>
+            <label>Введите дату показа</label><br>
+            <input type="date" name="show_date">
+        </p>
+        <p>
+            <label>Введите жанр</label><br>
+            <select name="category">
+            {% for category in categories %}
+                <option value="{{category.id}}">
+                    {% if category.id == film.category_id %}
+                        selected
+                    {% endif %}
+            {{category.name}}
+                </option>
+            {% endfor %}
+            </select>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+</body>
+</html>

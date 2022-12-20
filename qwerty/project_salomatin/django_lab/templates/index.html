@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <meta charset="utf-8"/>
+    <title>django123</title>
+</head>
+    <body>
+        <h2>Фильмы</h2>
+        <a href="create/">Добавление фильма</a>
+        <table>
+            <thead><th>Название</th><th>Дата релиза</th><th>Актёры</th><th>Дата показа</th></thead>
+            {% for film in films %}
+            <tr>
+                <td>{{ film.name }}</td>
+                <td>{{ film.release_date }}</td>
+                <td>{{ film.actors }}</td>
+                <td>{{ film.show_date }}</td>
+                <td>{{ film.category.name }}</td>
+                <td>
+                    <a href="edit/{{film.id}}">Изменить</a>
+                    <a href="delete/{{product.id}}">Удалить</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
